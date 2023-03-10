@@ -17,33 +17,26 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     private static final String FIELD_JAM = "jam";
     private static final String FIELD_KEGIATAN = "kegiatan";
 
-
-
-
-
-
     public MyDatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.ctx = context;
     }
 
+//    void tidak mereturn nilai
     @Override
     public void onCreate(SQLiteDatabase db) {
         String query = "CREATE TABLE " + TABLE_NAME + " (" + FIELD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-        FIELD_TANGGAL + " VARCHAR(16), " + FIELD_JAM + " VARCHAR(), " + FIELD_KEGIATAN + " VAHARCHAR(150) );";
+        FIELD_TANGGAL + " VARCHAR(16), " + FIELD_JAM + " VARCHAR(16), " + FIELD_KEGIATAN + " VAHARCHAR(150) );";
         db.execSQL(query);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-        String query = "DROP TABLE IF EXISTS" + TABLE_NAME;
+        String query = "DROP TABLE IF EXISTS " + TABLE_NAME;
         db.execSQL(query);
         onCreate(db);
 
     }
-
-
     public long tambahAgenda(String tanggal, String jam, String kegiatan){
 //        memasukan data ke data base
         SQLiteDatabase db = this.getWritableDatabase();
