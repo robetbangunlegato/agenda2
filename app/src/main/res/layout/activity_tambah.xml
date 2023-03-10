@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TambahActivity"
+    android:orientation="vertical"
+    android:layout_margin="6dp"
+    >
+
+    <EditText
+        android:id="@+id/et_tanggal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="tanggal"
+        android:inputType="text"
+        android:padding="16dp"
+        />
+
+    <EditText
+        android:id="@+id/et_jam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="jam"
+        android:inputType="text"
+        android:padding="16dp"
+        />
+
+    <EditText
+        android:id="@+id/et_kegiatan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="kegiatan"
+        android:inputType="text"
+        android:padding="16dp"
+        />
+
+    <Button
+        android:id="@+id/btn_tambah"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tambah"
+        />
+
+
+
+</LinearLayout>
