@@ -2,6 +2,7 @@ package com.example.agenda2;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -22,11 +23,15 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         this.ctx = context;
     }
 
-//    void tidak mereturn nilai
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query = "CREATE TABLE " + TABLE_NAME + " (" + FIELD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-        FIELD_TANGGAL + " VARCHAR(16), " + FIELD_JAM + " VARCHAR(16), " + FIELD_KEGIATAN + " VAHARCHAR(150) );";
+        String query = "CREATE TABLE " + TABLE_NAME + "(" +
+                FIELD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                FIELD_TANGGAL + " VARCHAR(16), " +
+                FIELD_JAM + " VARCHAR(5), " +
+                FIELD_KEGIATAN + " VARCHAR(150) ); "
+                ;
+
         db.execSQL(query);
     }
 
@@ -35,18 +40,31 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         String query = "DROP TABLE IF EXISTS " + TABLE_NAME;
         db.execSQL(query);
         onCreate(db);
-
     }
+
     public long tambahAgenda(String tanggal, String jam, String kegiatan){
-//        memasukan data ke data base
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
+
         cv.put(FIELD_TANGGAL, tanggal);
         cv.put(FIELD_JAM, jam);
         cv.put(FIELD_KEGIATAN, kegiatan);
 
         long eksekusi = db.insert(TABLE_NAME, null, cv);
-
         return eksekusi;
     }
+
+    public Cursor bacaDataAgenda(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME;
+
+        Cursor varCursor = null;
+        if(db != null){
+            varCursor = db.rawQuery(query, null);
+        }
+
+        return varCursor;
+    }
+
+
 }

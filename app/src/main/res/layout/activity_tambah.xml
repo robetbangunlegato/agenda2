@@ -9,14 +9,11 @@
     android:layout_margin="6dp"
     >
 
-
-
-
     <EditText
         android:id="@+id/et_tanggal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="tanggal"
+        android:hint="tanggal"
         android:inputType="text"
         android:padding="16dp"
         />
@@ -25,7 +22,7 @@
         android:id="@+id/et_jam"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="jam"
+        android:hint="jam"
         android:inputType="text"
         android:padding="16dp"
         />
@@ -34,7 +31,7 @@
         android:id="@+id/et_kegiatan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="kegiatan"
+        android:hint="kegiatan"
         android:inputType="text"
         android:padding="16dp"
         />
