@@ -3,6 +3,7 @@ package com.example.agenda2;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,16 +79,23 @@ public class AdapterAgenda extends RecyclerView.Adapter<AdapterAgenda.VHAgenda>{
                                 dialog.dismiss();
                                 ((MainActivity)ctx).onResume();
                             }
-
                         }
                     });
-
                     pesan.setPositiveButton("Ubah", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            String varId, varTanggal, varJam, varKegiatan;
 
-
-
+                            varId = tvId.getText().toString();
+                            varTanggal = tvTanggal.getText().toString();
+                            varJam = tvJam.getText().toString();
+                            varKegiatan = tvKegiatan.getText().toString();
+                            Intent kirim = new Intent(ctx, UbahActivity.class);
+                            kirim.putExtra("xId", varId);
+                            kirim.putExtra("xTanggal", varTanggal);
+                            kirim.putExtra("xJam", varJam);
+                            kirim.putExtra("xKegiatan", varKegiatan);
+                            ctx.startActivity(kirim);
                         }
                     });
                     pesan.show();
@@ -97,4 +105,3 @@ public class AdapterAgenda extends RecyclerView.Adapter<AdapterAgenda.VHAgenda>{
         }
     }
 }
-
